@@ -1,5 +1,6 @@
 <?php 
-$ini = parse_ini_file('config.ini');
+$ini = parse_ini_file('./config.ini');
+// print_r($ini);
 $dbtype = $ini['dbtype'];
 $dbname = $ini['dbname'];
 $dbhost = $ini['dbhost'];
@@ -12,11 +13,11 @@ try{
 	$db = new PDO($dsn, $dbuser, $dbpass);
 } catch (PDOException $e) {
 	print "An error occurred when connecting to the database: " . $e->getmessage();
-	// print "dbname $dbname\n";
-	// print "dbtype $dbtype\n";
-	// print "dbhost $dbhost\n";
-	// print "dbuser $dbuser\n";
-	// print "dsn $dsn\n"
+	print "<br>dbname $dbname<br>";
+	print "dbtype $dbtype<br>";
+	print "dbhost $dbhost<br>";
+	print "dbuser $dbuser<br>";
+	print "dsn $dsn";
 	die();
 }
 
