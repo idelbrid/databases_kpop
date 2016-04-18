@@ -8,3 +8,5 @@ This repository contains html/php code for a website based on a kpop database, w
 	* Uses **dbsetup.php**.
 * **index.php** - required, to my knowledge. Eventually to be used as a home page for the website.
 * **config_template.ini** - A template for the aformentioned **config.ini**
+* **song-list.php** - a page for listing all songs
+* **song-show.php** - a page for showing a particular song's information.
