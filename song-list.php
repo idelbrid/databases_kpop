@@ -16,6 +16,7 @@ $sql = "SELECT name, album, artist FROM song";
 			<th>Song Name</th>
 			<th>Album</th>
 			<th>Artist</th>
+			<th>Link to Details</th>
 		</tr>
 		<?php
 			foreach ($db->query($sql) as $row)
@@ -24,7 +25,12 @@ $sql = "SELECT name, album, artist FROM song";
 				$name = $row['name'];
 				$album = $row['album'];
 				$artist = $row['artist'];
-				echo "<tr><td>$name</td><td>$album</td><td>$artist</td></tr>";
+                $link = "./song-show.php?".
+                    "song_name=" . urlencode($name)."&" .
+                    "album=" . urlencode($album) . "&" .
+                    "artist=" . urlencode($artist);
+				echo "<tr><td>$name</td><td>$album</td><td>$artist</td>" .
+                "<td><a href=$link>Show Details</a> </td> </tr>";
 			}
 			?>
 		</table>
