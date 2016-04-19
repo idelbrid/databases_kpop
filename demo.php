@@ -16,7 +16,7 @@ $count = $result->fetchColumn();
 		<p>
 			We have all sorts of data about so much K-pop somehow. We have over
 			<?php echo $count?> K-pop artists in our database!
-			To browse songs in our database, click <a href="song-list.php">here</a>
+			To browse or search songs in our database, click <a href="song-list.php">here</a>
 		</p>
 	</body>
 

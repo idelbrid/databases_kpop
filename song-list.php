@@ -11,6 +11,19 @@ $sql = "SELECT name, album, artist FROM song";
 	<body>
 		<h2>Song Listing</h2>
 		<p>
+        Search for a song with the boxes below, or browse from the list.
+        <form action="song-show.php" method="GET">
+            <label>Song Name</label>
+            <input type="text" name="song_name"/>
+            <br>
+            <label>Song's Album Name</label>
+            <input type="text" name="album"/>
+            <br>
+            <label>Song's Artist Name</label>
+            <input type="text" name="artist"/>
+            <br>
+            <input type="submit" value="Enter"/>
+        </form>
 		<table border="1">
 		<tr>
 			<th>Song Name</th>
