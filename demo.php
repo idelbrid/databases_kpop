@@ -12,6 +12,8 @@ $count = $result->fetchColumn();
 		<title>K-pop Home</title>
 	</head>
 	<body>
+		<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
+		<hr>
 		<h2>Welcome to the K-pop database website!</h2>
 		<p>
 			We have all sorts of data about so much K-pop somehow. We have over
