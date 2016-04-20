@@ -1,0 +1,20 @@
+<?php
+function readFile($name){
+	$file = fopen($name,"r");
+	$lines = array();
+	while(!feof($file)){
+		$lines[] = fgetcsv($file, 1000);		
+	}
+	fclose($file);
+	return $lines;
+}	
+
+	$result = readFile('fancafe.csv');
+	echo '<pre>';
+	print_r($result);
+	echo '</pre>';
+?>
+
+<html>
+	<head>hiyo</head>
+</html>
