@@ -32,11 +32,11 @@ $sql = "SELECT name, album, artist FROM song";
 			<th>Album</th>
 			<th>Artist</th>
 			<th>Link to Details</th>
+			<th>Likes</th>
 		</tr>
 		<?php
 			foreach ($db->query($sql) as $row)
 			{
-				
 				$name = $row['name'];
 				$album = $row['album'];
 				$artist = $row['artist'];
@@ -44,8 +44,13 @@ $sql = "SELECT name, album, artist FROM song";
                     "song_name=" . urlencode($name)."&" .
                     "album=" . urlencode($album) . "&" .
                     "artist=" . urlencode($artist);
+				$fanlink = "./likes-list.php?" .
+					"song_name=" . urlencode($name)."&" .
+					"album=" . urlencode($album) . "&" .
+					"artist=" . urlencode($artist);
 				echo "<tr><td>$name</td><td>$album</td><td>$artist</td>" .
-                "<td><a href=$link>Show Details</a> </td> </tr>";
+                "<td><a href=$link>Show Details</a> </td> " .
+				"<td><a href=$fanlink>Likes</a></td></tr>";
 			}
 			?>
 		</table>
