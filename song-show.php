@@ -1,22 +1,5 @@
 <?php
 require_once './dbsetup.php';
-try{
-$query = 'SELECT languages.language as lang, duration, release_date, copies_sold, '.
-                'single, genre, music_video ' .
-         'FROM song, languages ' .
-         'WHERE name=:sname AND album=:salbum AND artist=:sartist AND song.language=languages.abbv;';
-
-$features_query = 'SELECT artist_name AS featured_artist '.
-                    'FROM features ' .
-                    'WHERE song_name=:sname AND song_album=:salbum AND song_artist=:sartist';
-$rank_query = 'SELECT rank, day_starting_week AS week' .
-                'FROM song_ranks' .
-                'WHERE name=:sname AND album:salbum AND artist=:sartist' ;
-$stmt = $db->prepare($query);
-$features_stmt = $db->prepare($features_query);
-$rank_stmt = $db->prepare($rank_stmt);
-
-} catch (Exception $e){ echo "exception " . $e->getMessage(); die;}
 ?>
 
 <html>
@@ -31,19 +14,15 @@ if( !empty($_POST['song_name']) and isset( $_POST["song_name"]) and
     !empty($_POST['album']) and isset($_POST["album"]) and
     !empty($_POST['artist']) and isset($_POST["artist"]))
 {
-//    echo "post is true<br>";
     $post = true;
     $name = $_POST['song_name'];
     $album = $_POST['album'];
     $artist = $_POST['artist'];
-//    echo 'got it<br>';
-//    $ins = 'INSERT INTO song VALUES';
 }
 if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
     !empty($_GET['album']) and isset($_GET["album"]) and
     !empty($_GET['artist']) and isset($_GET["artist"]))
 {
-//    echo 'get is true<br>';
     $get = true;
     $name = $_GET["song_name"];
     $album = $_GET["album"];
@@ -52,42 +31,76 @@ if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
     
 if($post)
 {
-    try{
-//        echo 'trying the sql<br>';
-        $insertsql = "INSERT INTO song VALUES".
-            "(:sname, :salbum, :sartist, :slanguage, :sduration, :srelease_date," .
-            ":scopies_sold, :ssingle, :sgenre, :smusic_video);";
-        $insertstmt = $db->prepare($insertsql);
-//        echo "The sql makes sense before values<br>";
-        $language = $_POST['language'];
-        $duration = $_POST['duration'];
-        $release_date = $_POST['release_date'];
-        $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
-        $single = $_POST['single'] ? 'TRUE' : 'FALSE';
-        $genre = $_POST['genre'];
-        $music_video = $_POST['music_video'] ? 'TRUE' : 'FALSE';
+    if( $_POST['ins_del_mod'] == 'insert')
+    {
+        try {
+            $language = $_POST['language'];
+            $duration = $_POST['duration'];
+            $release_date = $_POST['release_date'];
+            $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
+            $single = $_POST['single'] ? 'TRUE' : 'FALSE';
+            $genre = $_POST['genre'];
+            $music_video = $_POST['music_video'] ? 'TRUE' : 'FALSE';
 
-//        echo "Got to the execute...<br>";
-        $replacements = array(
-            ':sname' => $name,
-            ':salbum' => $album,
-            ':sartist' => $artist,
-            ':slanguage' => $language,
-            ':sduration' => $duration,
-            ':srelease_date' => $release_date,
-            ':scopies_sold' => $copies_sold,
-            ':ssingle' => $single,
-            ':sgenre' => $genre,
-            ':smusic_video' => $music_video
-        );
-        $insertstmt->execute($replacements);
-//        $a = $insertstmt->errorInfo();
-//        if(!empty($a))
-//            foreach($a as $problem)
-//                echo $problem;
+            $replacements = array(
+                ':sname' => $name,
+                ':salbum' => $album,
+                ':sartist' => $artist,
+                ':slanguage' => $language,
+                ':sduration' => $duration,
+                ':srelease_date' => $release_date,
+                ':scopies_sold' => $copies_sold,
+                ':ssingle' => $single,
+                ':sgenre' => $genre,
+                ':smusic_video' => $music_video
+            );
+            $insertsql = "INSERT INTO song VALUES" .
+                "(:sname, :salbum, :sartist, :slanguage, :sduration, :srelease_date," .
+                ":scopies_sold, :ssingle, :sgenre, :smusic_video);";
+            $insertstmt = $db->prepare($insertsql);
+            $insertstmt->execute($replacements);
+        }
+        catch(Exception $e){
+            echo 'Error with inserting the song! '. $e->getMessage();
+        }
     }
-    catch(PDOException $e){
-        echo 'Error with inserting the song! '. $e->getMessage();
+    elseif($_POST['ins_del_mod']=='mod')
+    {
+        try {
+            $updatesql = "UPDATE song SET " .
+                "(language, duration, release_date, copies_sold, single, genre, music_video) = " .
+                "(:slanguage, :sduration, :srelease_date, :scopies_sold, :ssingle, :sgenre, " .
+                ":smusic_video ) " .
+                "WHERE name=:sname AND album=:salbum AND artist=:sartist;";
+            $updatestmt = $db->prepare($updatesql);
+
+            $language = $_POST['language'];
+            $duration = $_POST['duration'];
+            $release_date = $_POST['release_date'];
+            $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
+            $single = $_POST['single'] ? 'TRUE' : 'FALSE';
+            $genre = $_POST['genre'];
+            $music_video = $_POST['music_video'] ? 'TRUE' : 'FALSE';
+
+            $replacements = array(
+                ':slanguage' => $language,
+                ':sduration' => $duration,
+                ':srelease_date' => $release_date,
+                ':scopies_sold' => $copies_sold,
+                ':ssingle' => $single,
+                ':sgenre' => $genre,
+                ':smusic_video' => $music_video,
+                ':sname' => $name,
+                ':salbum' => $album,
+                ':sartist' => $artist
+            );
+
+            $updatestmt->execute($replacements);
+
+        }
+        catch(ErrorException $e){
+            echo "Error with inserting the song! ". $e->getMessage();
+        }
     }
 }
 if($get OR $post)
@@ -95,6 +108,22 @@ if($get OR $post)
 	echo "<h2>Song Details for $name</h2>";
 	try
     {
+        $all_query = 'SELECT languages.language as lang, duration, release_date, copies_sold, '.
+            'single, genre, music_video ' .
+            'FROM song, languages ' .
+            'WHERE name=:sname AND album=:salbum AND artist=:sartist AND song.language=languages.abbv;';
+        $stmt = $db->prepare($all_query);
+
+        $features_query = 'SELECT artist_name AS featured_artist '.
+            'FROM features ' .
+            'WHERE song_name=:sname AND song_album=:salbum AND song_artist=:sartist';
+        $features_stmt = $db->prepare($features_query);
+
+        $rank_query = 'SELECT rank, day_starting_week AS week' .
+            'FROM song_ranks' .
+            'WHERE name=:sname AND album:salbum AND artist=:sartist' ;
+        $rank_stmt = $db->prepare($rank_stmt);
+
 		$stmt->execute(array(':sname' => $name, ':salbum' => $album,
 									  ':sartist' => $artist));
         $row = $stmt->fetch();
@@ -144,11 +173,6 @@ if($get OR $post)
                     "Additionally, $artist released a music video to accompany the song." :
                     "No official music video was released for this song.";
                 echo $answer ?>
-<!--                This song-->
-<!--                --><?php //$answer = empty($featured) ?
-//                    "does not feature any other artists." :
-//                    "features $feature_string.";
-//                echo $answer ?>
 
             <table border="1">
                 <tr>
@@ -182,11 +206,23 @@ if($get OR $post)
             </table>
             </p>
 
+            <p>
+                <?php
+                $link = "./song-update.php?".
+                    "song_name=" . urlencode($name)."&" .
+                    "album=" . urlencode($album) . "&" .
+                    "artist=" . urlencode($artist);
+                echo "Is the information above wrong? Click <a href=$link>here</a> to update it!";
+                ?>
+            </p>
+
             <?php
         }
         else
         {
             echo "No data found for this song! :(";
+            echo "<br>Why not <a href='song-add.php'>add it</a>?";
+
         }
     } catch (PDOException $e)
 	{
@@ -216,7 +252,7 @@ else
 	<?php
 }
 ?>
-        <a href="song-list.php">Back to browse songs</a>
+        <br><a href="song-list.php">Back to browse songs</a>
 
     </body>
 </html>

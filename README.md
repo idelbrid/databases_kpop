@@ -18,5 +18,7 @@ This repository contains html/php code for a website based on a kpop database, w
 	* Uses **dbsetup.php**
 	* Sends form to **song-show.php** 
 	* Must have album and artist existing already
+* **song-update.php** - a page for updating song entities in the DB. Upon submission of the form, goes to **song-show.php**
+	* Cannot alter song name, album, or artist. Changing the key would blow things up, unless using update CASCADE
 * **likes-list.php** - a page for listing all those who like a song.
 	* Uses **dbsetup.php**

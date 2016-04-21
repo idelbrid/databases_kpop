@@ -1,7 +1,7 @@
 <?php
 require_once './dbsetup.php';
 
-$sql = "SELECT name, album, artist FROM song";
+$sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 ?>
 
 <html>
@@ -14,6 +14,8 @@ $sql = "SELECT name, album, artist FROM song";
 		<h2>Song Listing</h2>
 		<p>
         Search for a song with the boxes below, or browse from the list.
+		<br>If the song you are looking for
+		isn't in our system, why not <a href="song-add.php">add it</a>?
         <form action="song-show.php" method="GET">
             <label>Song Name</label>
             <input type="text" name="song_name"/>
