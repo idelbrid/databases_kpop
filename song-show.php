@@ -16,7 +16,7 @@ $stmt = $db->prepare($query);
 $features_stmt = $db->prepare($features_query);
 $rank_stmt = $db->prepare($rank_stmt);
 
-} catch (Exception $e){ echo "exception " . $e->getmessage(); die;}
+} catch (Exception $e){ echo "exception " . $e->getMessage(); die;}
 ?>
 
 <html>
@@ -27,13 +27,71 @@ $rank_stmt = $db->prepare($rank_stmt);
     <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
     <hr>
 <?php
+if( !empty($_POST['song_name']) and isset( $_POST["song_name"]) and
+    !empty($_POST['album']) and isset($_POST["album"]) and
+    !empty($_POST['artist']) and isset($_POST["artist"]))
+{
+//    echo "post is true<br>";
+    $post = true;
+    $name = $_POST['song_name'];
+    $album = $_POST['album'];
+    $artist = $_POST['artist'];
+//    echo 'got it<br>';
+//    $ins = 'INSERT INTO song VALUES';
+}
 if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
     !empty($_GET['album']) and isset($_GET["album"]) and
     !empty($_GET['artist']) and isset($_GET["artist"]))
 {
-	$name = $_GET["song_name"];
-	$album = $_GET["album"];
-	$artist = $_GET["artist"];
+//    echo 'get is true<br>';
+    $get = true;
+    $name = $_GET["song_name"];
+    $album = $_GET["album"];
+    $artist = $_GET["artist"];   
+}    
+    
+if($post)
+{
+    try{
+//        echo 'trying the sql<br>';
+        $insertsql = "INSERT INTO song VALUES".
+            "(:sname, :salbum, :sartist, :slanguage, :sduration, :srelease_date," .
+            ":scopies_sold, :ssingle, :sgenre, :smusic_video);";
+        $insertstmt = $db->prepare($insertsql);
+//        echo "The sql makes sense before values<br>";
+        $language = $_POST['language'];
+        $duration = $_POST['duration'];
+        $release_date = $_POST['release_date'];
+        $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
+        $single = $_POST['single'] ? 'TRUE' : 'FALSE';
+        $genre = $_POST['genre'];
+        $music_video = $_POST['music_video'] ? 'TRUE' : 'FALSE';
+
+//        echo "Got to the execute...<br>";
+        $replacements = array(
+            ':sname' => $name,
+            ':salbum' => $album,
+            ':sartist' => $artist,
+            ':slanguage' => $language,
+            ':sduration' => $duration,
+            ':srelease_date' => $release_date,
+            ':scopies_sold' => $copies_sold,
+            ':ssingle' => $single,
+            ':sgenre' => $genre,
+            ':smusic_video' => $music_video
+        );
+        $insertstmt->execute($replacements);
+//        $a = $insertstmt->errorInfo();
+//        if(!empty($a))
+//            foreach($a as $problem)
+//                echo $problem;
+    }
+    catch(PDOException $e){
+        echo 'Error with inserting the song! '. $e->getMessage();
+    }
+}
+if($get OR $post)
+{
 	echo "<h2>Song Details for $name</h2>";
 	try
     {

@@ -52,7 +52,7 @@
     <input type="checkbox" name="single">
     <br>
     <label>Genre</label>
-    <select>
+    <select name="genre">
         <?php
         foreach($genrest as $row)
         {
