@@ -16,11 +16,11 @@ INSERT INTO album VALUES
 
 INSERT INTO song VALUES
 ('Blue/Tree Frog', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
-interval '00:03:27', date('2012-07-15'), NULL, FALSE, 'Hip hop', FALSE),
+interval '00:03:27', date('2012-07-15'), NULL, FALSE, 'Hip Hop', FALSE),
 ('Passionate Goodbye', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
 interval '00:03:28', date('2012-07-15'), NULL, FALSE, 'K-pop', FALSE),
 ('Gangnam Style', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
-interval '00:03:39', date('2012-07-15'), 3900000, TRUE, 'Hip hop', TRUE),
+interval '00:03:39', date('2012-07-15'), 3900000, TRUE, 'Hip Hop', TRUE),
 ('Year of 77', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
 interval '00:04:39', date('2012-07-15'), NULL, FALSE, 'Hip Hop', FALSE),
 ('What Would Have Been?', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',

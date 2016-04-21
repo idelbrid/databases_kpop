@@ -3,7 +3,7 @@
     $langquery = 'SELECT language, abbv FROM languages;';
     $langst = $db->query($langquery);
 
-    $genrequery = 'SELECT UNIQUE genre FROM song;';
+    $genrequery = 'SELECT DISTINCT genre FROM song;';
     $genrest = $db->query($genrequery);
 ?>
 <html>
@@ -56,7 +56,7 @@
         <?php
         foreach($genrest as $row)
         {
-            $genre = $row;
+            $genre = $row['genre'];
             echo "<option value='$genre'>$genre</option>";
         }
         ?>
