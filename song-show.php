@@ -35,8 +35,9 @@ if($post)
     {
         try {
             $language = $_POST['language'];
-            $duration = $_POST['duration'];
-            $release_date = $_POST['release_date'];
+            $minutes = $_POST['minutes'];
+            $seconds = $_POST['seconds'];
+            $duration = "00:0$minutes:$seconds";            $release_date = $_POST['release_date'];
             $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
             $single = $_POST['single'] ? 'TRUE' : 'FALSE';
             $genre = $_POST['genre'];
@@ -75,7 +76,10 @@ if($post)
             $updatestmt = $db->prepare($updatesql);
 
             $language = $_POST['language'];
-            $duration = $_POST['duration'];
+//            $duration = $_POST['duration'];
+            $minutes = $_POST['minutes'];
+            $seconds = $_POST['seconds'];
+            $duration = "00:0$minutes:$seconds";
             $release_date = $_POST['release_date'];
             $copies_sold = $_POST['copies_sold'] ? $_POST['copies_sold'] : null;
             $single = $_POST['single'] ? 'TRUE' : 'FALSE';

@@ -40,10 +40,11 @@
     </select>
     <br>
     <label>Song's Duration</label>
-    <input type="time" value="00:03:15" max="00:10:00" name="duration" required>
+    <input type="number" value="3" min="0" max="9" step="1" name="minutes" required> min
+    <input type="number" value="43" min="0" max="59" step="1" name="seconds" required> sec
     <br>
     <label>Song's Release Date</label>
-    <input type="date" value="2008-01-21" min="1980-01-01" name="release_date">
+    <input type="date" value="2008-01-21" min="1980-01-01" name="release_date" required>
     <br>
     <label>Copies Sold</label>
     <input type="number" value="48000" name="copies_sold">

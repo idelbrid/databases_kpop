@@ -66,14 +66,21 @@ if($get){
         ?>
     </select>
     <br>
+    <?php
+    $ar = explode(':', $duration);
+    $minutes = $ar[1];
+    $seconds = $ar[2];
+    ?>
+
     <label>Song's Duration</label>
-    <input type="time" value="<?php echo $duration?>" max="00:10:00" name="duration" required>
+    <input type="number" value="<?php echo $minutes?>" min="0" max="9" step="1" name="minutes" required> min
+    <input type="number" value="<?php echo $seconds?>" min="0" max="59" step="1" name="seconds"> sec
     <br>
     <label>Song's Release Date</label>
     <input type="date" value="<?php echo $release_date?>" min="1980-01-01" name="release_date">
     <br>
     <label>Copies Sold</label>
-    <input type="number" value="<?php echo $copies_sold?>" name="copies_sold">
+    <input type="number" value="<?php echo $copies_sold?>" min="0" step="1" name="copies_sold">
     <br>
     <label>Released as a Single?</label>
     <input type="checkbox" name="single" <?php if($single){echo 'checked="checked"';}?>>
