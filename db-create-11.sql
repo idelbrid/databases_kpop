@@ -85,11 +85,6 @@ CREATE TABLE buys (
 	REFERENCES album(name, artist_name)
 ); 
 
-CREATE TABLE fanclub_membership(
-	fan_username VARCHAR REFERENCES fan(username),
-	fanclub_name VARCHAR REFERENCES fanclub(name)
-);
-
 CREATE TABLE trainee(
 	name VARCHAR, 
 	birth_date DATE,
@@ -106,8 +101,8 @@ CREATE TABLE trainee(
 );
 
 CREATE TABLE part_of(
-	fanclub_name VARCHAR PRIMARY KEY,
-	artist_name VARCHAR REFERENCES artist(name)
+	fan_username VARCHAR REFERENCES fan(username),
+	fanclub_name VARCHAR REFERENCES fanclub(name)
 );
 
 
