@@ -13,7 +13,7 @@
 <body>
 <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
 <hr>
-<h2>Adding a Song to the Datbase</h2>
+<h2>Adding a Song to the Database</h2>
 <form action="song-show.php" method="post">
     <label>Please enter a song's name, album, and artist.</label>
     <br>
