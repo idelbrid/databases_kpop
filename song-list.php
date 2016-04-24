@@ -52,7 +52,14 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 					"artist=" . urlencode($artist);
 				echo "<tr><td>$name</td><td>$album</td><td>$artist</td>" .
                 "<td><a href=$link>Show Details</a> </td> " .
-				"<td><a href=$fanlink>Likes</a></td></tr>";
+				"<td><a href=$fanlink>Likes</a></td>";
+				echo "<td><form action='./song-delete.php' method='POST' id='' " .
+                               "onSubmit=\"return confirm('Confirm delete of $name');\"> " .
+                               "<input type='hidden' value='$name' name='song_name'> " .
+                               "<input type='hidden' value='$album' name='album'> " .
+                               "<input type='hidden' value='$artist' name='artist'> " .
+                               "<input type='submit' value='DELETE'> ".
+                "</form></td></tr>";
 			}
 			?>
 		</table>
