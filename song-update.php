@@ -114,7 +114,6 @@ echo "<a href='$link'>" .
 ?>
 
     <?php include_once './footer.php'?>
-    // maybe
         
 <?php
         }
