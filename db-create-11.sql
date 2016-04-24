@@ -102,7 +102,7 @@ CREATE TABLE trainee(
 
 CREATE TABLE part_of(
 	fan_username VARCHAR REFERENCES fan(username),
-	fanclub_name VARCHAR REFERENCES fanclub(name)
+	fanclub_name VARCHAR REFERENCES fanclub(name) ON UPDATE CASCADE
 );
 
 
