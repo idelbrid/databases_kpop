@@ -13,10 +13,25 @@ INSERT INTO TV_SHOW VALUES
 /*Venue (name, country, region, city, indoors_outdoors, max_occupancy)*/
 
 INSERT INTO venue VALUES
-('SBS Open Hall', KOR, 'Gyeonggi-do', 'Seoul', TRUE, 2000),
-('KBS New Wing Open Hall', KOR, 'Gyeonggi-do', 'Seoul', TRUE, 1824),
-('MBC Dream Center', KOR, 'Gyeonggi-do', 'Goyang', TRUE, 2000),
-('CJ E&M Center Studio', KOR, 'Gyeonggi-do', 'Seoul', TRUE, 2000);
+('SBS Open Hall', 'KOR', 'Gyeonggi-do', 'Seoul', TRUE, 2000),
+('KBS New Wing Open Hall', 'KOR', 'Gyeonggi-do', 'Seoul', TRUE, 1824),
+('MBC Dream Center', 'KOR', 'Gyeonggi-do', 'Goyang', TRUE, 2000),
+('Bitmaru Broadcasting Center', 'KOR', 'Gyeonggi-do', 'Ilsan', TRUE, 2000),
+('CJ E&M Center Studio', 'KOR', 'Gyeonggi-do', 'Seoul', TRUE, 2000);
+
+/* performance(performance_date, tickets sold, venue_name, artist_name) */
+
+INSERT INTO performance VALUES
+(2015-06-20, null, 'MBC Dream Center', 'Mamamoo'),
+(2014-11-22, null, 'MBC Dream Center', 'Mamamoo'),
+(2014-11-19, null, 'Bitmaru Broadcasting Center', 'Mamamoo'),
+(2016-03-05, null, 'MBC Dream Center', 'Mamamoo'),
+(2015-08-22, null, 'MBC Dream Center', "Girls' Generation"),
+(2014-03-28, null, 'KBS New Wing Open Hall', "Girls' Generation"),
+(2016-04-14, null, 'CJ E&M Center Studio', 'Block B');
+
+
+
 
 
 
