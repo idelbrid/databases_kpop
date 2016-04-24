@@ -25,7 +25,7 @@ require_once './dbsetup.php';
 				<input type="submit" value="submit">
 			</form>
 		</section>
-		<table border="1">
+		<table class="table">
 		<tr>
 			<th>Artist</th>
 			<th>Fanclub Name</th>
