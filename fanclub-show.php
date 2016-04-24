@@ -9,24 +9,31 @@ function getQuery($name){
     // print_r($sql);
     return $sql;
 }
+
 function update($artist, $name,$website,$members){
-    echo "im in update\n";
-    //$updatesql = "UPDATE fanclub SET (name,website,num_members)=(:name,:website,:num_members) WHERE artist=:artist";
-    $query = $db->prepare("UPDATE fanclub SET website=?,num_members=? WHERE artist=?");
- //    $stmt = $db->prepare('bogus sql');
-    if(!$stmt){
-    	echo "\nPDO::errorInfo():\n";
-	print_r($db->errorInfo());
-    }
-    echo "before execute";
-    $query->execute(array($name,$website,$members,$artist));
-    if($query->rowCount==1){echo 'success';}
-    else{echo 'update fail';}
+    echo "Updated<br>";
+    global $db;
+    //if(empty($db))
+    //    echo "no db";
+    //if($db)
+    //    echo "indeed has db<br>";
+    //echo "$artist $name $website $members";
+    $query = $db->prepare("UPDATE fanclub SET (name, website, num_members) = (:nam, :url, :mems) WHERE artist=:artist;");
+    $query->execute(array(':nam' => $name, ':url' => $website, ':mems' => $members, ':artist' => $artist));
+    //$err = $query->errorInfo();
+    //foreach($err as $row){
+    //    echo "<br>" . $row . "<br>";
+    //    foreach($row as $a)
+    //        echo "<br>" . $a . "<br>";
+    //}
+
     $sqls = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
     echo $sqls;
     return $sqls;
 }
 ?>
+
+
 
 <html>
 	<head>
@@ -37,7 +44,12 @@ function update($artist, $name,$website,$members){
     <hr>
 <?php
 
-if($_GET['name']){
+if($_POST['artist']){
+    $sql = update($_POST['artist'],$_POST['name'],$_POST['website'],$_POST['members']);
+    //echo $sql . "lala \n";
+    goto exec;
+}
+elseif($_GET['name']){
     $name = $_GET['name'];
     // echo "yehn" . $name;
     goto exea;
@@ -46,17 +58,19 @@ if($_GET['name']){
     // echo "yeha" . $name;
     goto exeb;
 }else{
-    if($_POST){
-        echo "im here yo, " . $_POST['artist'];
-        //UPDATE
-        $name = $_POST['name'];
-        update($_POST['artist'],$_POST['name'],$_POST['website'],$_POST['members']);
-        goto exec;
-    }else{
+    // echo "asasasa\n";
+    // if($_POST['']){
+    //     echo "im here yo, " . $_POST['artist'];
+    //     //UPDATE
+    //     $name = $_POST['name'];
+    //     update($_POST['artist'],$_POST['name'],$_POST['website'],$_POST['members']);
+    //     goto exec;
+
+    // }else{
         echo "im not here";
         echo "No found artist, redircting to fanbase list";
         header( "refresh:2; url=fanclub-list.php" );
-    }
+    // }
 }
 
     // $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
@@ -69,16 +83,16 @@ if($_GET['name']){
     goto exec;
 
     exec:
-    // if($db->query($sql)->num_rows==0){
-    //      echo "No found artist, redircting to fanbase list";
-    //     header( "refresh:2; url=fanclub-list.php" );
-    // }else{
+    if(!($db->query($sql)->fetch())){
+         echo "No found artist, redircting to fanbase list";
+        header( "refresh:2; url=fanclub-list.php" );
+    }else{
         foreach($db->query($sql) as $row){
         $name = $row['name'];
         $artist = $row['artist'];
         $website = $row['website'];
         $members = $row['num_members'];
-    // }
+    }
     $sql2 = "SELECT * FROM part_of WHERE fanclub_name = '$name';";
     $fans = array();
     foreach($db->query($sql2) as $row){
