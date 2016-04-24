@@ -28,7 +28,7 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
             <br>
             <input type="submit" value="Enter"/>
         </form>
-		<table border="1">
+		<table class="table">
 		<tr>
 			<th>Song Name</th>
 			<th>Album</th>

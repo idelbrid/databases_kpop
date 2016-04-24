@@ -178,7 +178,7 @@ if($get OR $post)
                     "No official music video was released for this song.";
                 echo $answer ?>
 
-            <table border="1">
+            <table class="table">
                 <tr>
                     <td>Length</td>
                     <td><?php echo $length ?></td>
