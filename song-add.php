@@ -71,5 +71,4 @@
 </form>
 <a href="song-list.php">Back to browse songs</a>
 
-</body>
-</html>
+    <?php include_once './footer.php'?>
