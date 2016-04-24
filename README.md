@@ -4,21 +4,15 @@ This repository contains html/php code for a website based on a kpop database, w
 
 * **dbsetup.php** - script used to create a connection to the database. 
 	* Uses a **config.ini** file, which must be created for the user's system.
-* **demo.php** - a php/html page used for practice and troubleshooting 
-	* **to be removed**
-	* Uses **dbsetup.php**.
 * **index.php** - Home page of the website. Minimal currently.
-	* Uses **dbsetup.php**
 * **config_template.ini** - A template for the aformentioned **config.ini**
 * **song-list.php** - a page for listing all songs. Provides links to **song-show.php**, **likes-list.php**, **song-add.php**, and a form to fill to find songs.
-	* Uses **dbsetup.php** 
 * **song-show.php** - a page for showing a particular song's information. Uses a get parameter to retrieve data.
-	* Uses **dbsetup.php**
 * **song-add.php** - a page for submitting a new song into the database.
-	* Uses **dbsetup.php**
 	* Sends form to **song-show.php** 
 	* Must have album and artist existing already
 * **song-update.php** - a page for updating song entities in the DB. Upon submission of the form, goes to **song-show.php**
 	* Cannot alter song name, album, or artist. Changing the key would blow things up, unless using update CASCADE
 * **likes-list.php** - a page for listing all those who like a song.
-	* Uses **dbsetup.php**
+* **song-delete.php** - a page that deletes a song (submitted via POST) from the DB. Redirects to **song-list.php** after completion of delete. 
+
