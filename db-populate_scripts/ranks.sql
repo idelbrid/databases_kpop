@@ -29,14 +29,14 @@ INSERT INTO song_ranks VALUES
 (1, 'Toy', 'Block B', 'Blooming Period' 2016-04-03),
 (2, 'Talk Love', 'K. Will', null, 2016-04-03),
 (16, "You're the Best", 'Mamamoo', 'Melting', 2016-04-03),
-(19, "You're So Fine", 'CNBLUE', 'BLUEMING', 2016-04-03),
+(19, "You're So Fine", 'CNBLUE', 'BLUEMING', 2016-04-03);
 
 
 
 INSERT INTO album_ranks VALUES
 (1, 'Blooming Period', 'Block B', 2016-04-10),
 (2, 'BLUEMING', 'CNBLUE', 2016-04-10),
-(5, 'Flight Log: Departure', 'GOT7', 2016-04-10),
+(5, 'Flight Log: Departure', 'GOT7', 2016-04-10);
 
 
 
