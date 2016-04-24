@@ -15,6 +15,7 @@ require_once './dbsetup.php';
 		die();
 	}
 	?>
+	<?php include_once './header.php'?>
 	<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
 <hr>
 		<h2>Fanbase List</h2>
@@ -41,6 +42,4 @@ require_once './dbsetup.php';
 			}
 		?>
 		</table>
-	</body>
-	
-</html>
+	<?php include_once './footer.php'?>

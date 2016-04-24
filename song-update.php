@@ -113,8 +113,8 @@ echo "<a href='$link'>" .
      '</a>';
 ?>
 
-</body>
-</html>
+    <?php include_once './footer.php'?>
+    // maybe
         
 <?php
         }

@@ -10,6 +10,7 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 	</head>
 	<body>
 	    <?php include_once './header.php'?>
+
 		<h2>Song Listing</h2>
 		<p>
         Search for a song with the boxes below, or browse from the list.
@@ -63,6 +64,4 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 			?>
 		</table>
 		</p>
-	</body>
-	
-</html>
+	<?php include_once './footer.php'?>

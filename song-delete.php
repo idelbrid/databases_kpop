@@ -31,8 +31,9 @@ $del_output = $del_stmt->execute(array(
 <!--    Deleting --><?php //echo $name;?>
 </head>
 <body>
+    <?php include_once './header.php'?>
 <p>
     Deleting <?php echo $name;?>
 </p>
-</body>
-</html>
+    <?php include_once './footer.php'?>
+    // notsure

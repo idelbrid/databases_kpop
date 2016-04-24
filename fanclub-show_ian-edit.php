@@ -45,6 +45,7 @@ function update($artist, $name,$website,$members){
 		<title>Korean Pop | K-pop FanBase-list details</title>
 	</head>
 	<body>
+        <?php include_once './header.php'?>
     <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
     <hr>
 <?php
@@ -134,5 +135,4 @@ if($_GET['name']){
 ?>
         <br><a href="fanclub-list.php">Or click to go back to view all fanbases</a>
 
-    </body>
-</html>
+        <?php include_once './footer.php'?>

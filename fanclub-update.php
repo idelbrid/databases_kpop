@@ -8,6 +8,7 @@ require_once './dbsetup.php';
 		<title>Korean Pop | K-pop FanBase-list details</title>
 	</head>
 	<body>
+        <?php include_once './header.php'?>
     <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
     <hr>
 <?php
@@ -50,5 +51,4 @@ require_once './dbsetup.php';
         <button onclick='window.history.back();'>cancel</button>
 </form>
     
-    </body>
-</html>
+    <?php include_once './footer.php'?>
