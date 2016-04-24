@@ -7,9 +7,9 @@ require_once './dbsetup.php';
 		<title>Song Detail</title>
 	</head>
 	<body>
-    <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
-    <hr>
-<?php
+    <?php include_once './header.php'?>
+
+    <?php
 if( !empty($_POST['song_name']) and isset( $_POST["song_name"]) and
     !empty($_POST['album']) and isset($_POST["album"]) and
     !empty($_POST['artist']) and isset($_POST["artist"]))

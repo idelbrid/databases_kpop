@@ -44,8 +44,8 @@ if($get){
     <title>Modifying Song in Database</title>
 </head>
 <body>
-<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
-<hr>
+<?php include_once './header.php'?>
+
 <h2>Modifying the Song <?php echo $name?></h2>
 <p>Please make the modifications below:</p>
 <form action="song-show.php" method="post">

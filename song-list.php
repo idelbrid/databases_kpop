@@ -9,8 +9,7 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 		<title>Song Listing</title>
 	</head>
 	<body>
-	    <h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
-	    <hr>
+	    <?php include_once './header.php'?>
 		<h2>Song Listing</h2>
 		<p>
         Search for a song with the boxes below, or browse from the list.

@@ -23,8 +23,8 @@ try{
     <title>Who Likes This Song?</title>
 </head>
 <body>
-<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
-<hr>
+<?php include_once './header.php'?>
+
 <?php
 if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
     !empty($_GET['album']) and isset($_GET["album"]) and
