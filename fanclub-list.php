@@ -18,6 +18,12 @@ require_once './dbsetup.php';
 	<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
 <hr>
 		<h2>Fanbase List</h2>
+		<section id="search">
+			<form action="./fanclub-show.php" method="get">
+				<label>Search artist: <input type="text" name="artist" required></label>
+				<input type="submit" value="submit">
+			</form>
+		</section>
 		<table border="1">
 		<tr>
 			<th>Artist</th>
@@ -29,7 +35,7 @@ require_once './dbsetup.php';
 			{
 				$artist = $row['artist'];
 				$name = $row['name'];
-   			$link = "./fan-show.php?name=";
+   			$link = "./fanclub-show.php?name=";
 			echo "<tr><td>$artist</td><td>$name</td><td><a href=$link" . urlencode($name) .">go</a></td></tr>";
 			//echo <tr><td>$row['artist']</td><td>$row['name']</td><td>lala</td></tr>";
 			}
