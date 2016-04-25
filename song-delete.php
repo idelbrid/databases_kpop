@@ -36,4 +36,3 @@ $del_output = $del_stmt->execute(array(
     Deleting <?php echo $name;?>
 </p>
     <?php include_once './footer.php'?>
-    // notsure

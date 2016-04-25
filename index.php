@@ -16,4 +16,5 @@ $count = $result->fetchColumn();
     To browse or search songs in our database, click <a href="song-list.php">here</a>
 </p>
 <p><a href="https://docs.google.com/document/d/1DKID1yrGWr69chy9pl7-sWqJ75DdYPC0oAfABnHSBiU/#">Project Design (Google Doc)</a></p>
+<img class="img-responsive" src="https://lh3.googleusercontent.com/-ALad327dVuA/AAAAAAAAAAI/AAAAAAAAAF4/p-HPdSIpi1M/s0-c-k-no-ns/photo.jpg">
 <?php include_once './footer.php'?>                     

@@ -16,8 +16,6 @@ require_once './dbsetup.php';
 	}
 	?>
 	<?php include_once './header.php'?>
-	<h1 style="text-align:center;"><a href="index.php">K-Pop Database</a></h1>
-<hr>
 		<h2>Fanbase List</h2>
 		<section id="search">
 			<form action="./fanclub-show.php" method="get">
