@@ -16,7 +16,7 @@ INSERT INTO appears_on VALUES
 ('Sung Si-kyung', 'Running Man', date('2015-03-22')),
 ('Sung Si-kyung', 'Happy Together', date('2014-01-15')),
 ('Sung Si-kyung', 'Strong Heart', date('2011-09-20')),
-('Yoo Do-hyun', 'Running Man', date('2012-07-01')),
+('Yoon Do-hyun', 'Running Man', date('2012-07-01')),
 ('PSY', 'Running Man', date('2015-07-03')),
 ('PSY', 'Star King', date('2013-02-02')),
 ('PSY', 'Infinity Challenge', date('2011-07-02')),
