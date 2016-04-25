@@ -9,7 +9,7 @@ albums we have: bigbang vol.1 big, made series, first step, 2get
 */
 START TRANSACTION;
 
-INSERT INTO songs VALUES
+INSERT INTO song VALUES
 ('Toy', 'Blooming Period', 'Block B', 'KOR', interval '00:03:27', date('2016-04-10'), null, TRUE, 'K-pop', TRUE),
 ('Talk Love', 'Descendants of the Sun', 'K. Will', 'KOR', interval '00:03:37', date('2016-03-17'), null, TRUE, 'Ballad', TRUE),
 ('This Love', 'Amaranth', 'Davichi','KOR', interval '00:03:49', date('2016-03-02'), null, TRUE, 'Ballad', TRUE),
@@ -27,7 +27,7 @@ INSERT INTO song_ranks VALUES
 (2, 'Toy', 'Block B', 'Blooming Period', date('2016-04-10')),
 (4, 'Talk Love', 'K. Will', 'Descendants of the Sun', date('2016-04-10')),
 (5, 'This Love', 'Davichi', 'Amaranth', date('2016-04-10')),
-(1, 'Toy', 'Block B', 'Blooming Period' date('2016-04-03')),
+(1, 'Toy', 'Block B', 'Blooming Period', date('2016-04-03')),
 (2, 'Talk Love', 'K. Will', null, date('2016-04-03')),
 (16, "You're the Best", 'Mamamoo', 'Melting', date('2016-04-03')),
 (19, "You're So Fine", 'CNBLUE', 'BLUEMING', date('2016-04-03'));
