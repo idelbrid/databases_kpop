@@ -3,6 +3,8 @@ artists we have: g-dragon, sung si-kyung, kim jin-pyo, yoon do-hyun, lena park, 
 shows we have: family outing, happy together, strong heart, infinity challenge, folden fishery, star king, hello baby, running man 
 appears_on(artist_name, show_name, episode_date)*/
 
+START TRANSACTION;
+
 ALTER TABLE appears_on ADD COLUMN episode_date date;
 
 INSERT INTO appears_on VALUES
@@ -23,6 +25,6 @@ INSERT INTO appears_on VALUES
 ('PSY', 'Happy Together', date('2009-12-03'));
 
 
-
+END;
 
 

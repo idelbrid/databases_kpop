@@ -1,5 +1,7 @@
 /*TV Show (name, start_date, end_date, type, channel, country, language) */
 
+START TRANSACTION;
+
 INSERT INTO TV_SHOW VALUES
 ('Family Outing', date('2008-06-15'), date('2010-02-14'), 'Variety', 'SBS', 'KOR', 'KOR'),
 ('Happy Together', date('2001-11-08'), null, 'Variety', 'KBS2', 'KOR', 'KOR'),
@@ -31,7 +33,7 @@ INSERT INTO performance VALUES
 (date('2016-04-14'), null, 'CJ E&M Center Studio', 'Block B');
 
 
-
+END;
 
 
 
