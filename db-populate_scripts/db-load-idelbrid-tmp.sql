@@ -38,7 +38,8 @@ INSERT INTO company VALUES
 ('Rainbow Bridge World', NULL, NULL, 'KOR'),
 ('YMC Entertainment', 'Cho Yoo-myung', NULL, 'KOR'),
 ('YG Entertainment', 'Yang Hyun-suk', 150000000, 'KOR'),
-('LOEN Entertainment', 'Shin Won-soo', 323000000000, 'KOR');
+('LOEN Entertainment', 'Shin Won-soo', 323000000000, 'KOR'),
+('StarShip Entertainment', 'Kim Si-dae', NULL, 'KOR');
 
 INSERT INTO artist VALUES
 ('G-Dragon', date('2009-08-18'), 'YG Entertainment'),
