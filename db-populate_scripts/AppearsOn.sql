@@ -5,8 +5,6 @@ appears_on(artist_name, show_name, episode_date)*/
 
 START TRANSACTION;
 
-ALTER TABLE appears_on ADD COLUMN episode_date date;
-
 INSERT INTO appears_on VALUES
 ('G-Dragon', 'Running Man', date('2013-09-15')),
 ('G-Dragon', 'Family Outing', date('2008-08-03')),
