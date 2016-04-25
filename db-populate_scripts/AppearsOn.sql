@@ -1,7 +1,7 @@
 /* Appears On:
 artists we have: g-dragon, sung si-kyung, kim jin-pyo, yoon do-hyun, lena park, psy
 shows we have: family outing, happy together, strong heart, infinity challenge, folden fishery, star king, hello baby, running man 
-appears_on(artist_name, show_name)*/
+appears_on(artist_name, show_name, episode_date)*/
 
 ALTER TABLE appears_on ADD COLUMN episode_date date;
 
