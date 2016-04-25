@@ -142,6 +142,7 @@ CREATE TABLE memberOf(
 	trainee_birthdate DATE,
 	start_date DATE,
 	end_date DATE,
+	artist VARCHAR REFERENCES artist(name),
 	FOREIGN KEY (trainee_name,trainee_birthdate)
 	REFERENCES trainee(name,birth_date)
 );
