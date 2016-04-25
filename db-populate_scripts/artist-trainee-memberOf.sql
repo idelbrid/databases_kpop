@@ -28,11 +28,11 @@ INSERT INTO trainee VALUES
 ('Dong Si Cheng', date('1986-02-06'), FALSE, 'M','KOR', NULL,'WinWin','S.M. Entertainment'),
 
 INSERT INTO memberOf VALUES
-('Jung Yunho', date('1986-02-06'), date('2004-02-06'), date('2010-04-03')),
-('Shim Changmin', date('1988-02-18'), date('2004-02-06'), date('2010-04-03')),
-('Kim Jae Joong', date('1986-01-26'), date('2004-02-06'), date('2010-04-03')),
-('Park Yoo Chun', date('1986-06-04'), date('2004-02-06'), date('2010-04-03')),
-('Kim Junsu', date('1986-12-15'), date('2004-02-06'), date('2010-04-03')),
-('Jung Soo Yeon', date('1989-04-18'), date('2007-08-05'), date('2015-08-06')),
+('Jung Yunho', date('1986-02-06'), date('2004-02-06'), date('2010-04-03')，'TVXQ'),
+('Shim Changmin', date('1988-02-18'), date('2004-02-06'), date('2010-04-03'), 'TVXQ'),
+('Kim Jae Joong', date('1986-01-26'), date('2004-02-06'), date('2010-04-03'), 'TVXQ'),
+('Park Yoo Chun', date('1986-06-04'), date('2004-02-06'), date('2010-04-03'), 'TVXQ'),
+('Kim Junsu', date('1986-12-15'), date('2004-02-06'), date('2010-04-03'), 'TVXQ'),
+('Jung Soo Yeon', date('1989-04-18'), date('2007-08-05'), date('2015-08-06'), 'Girls Generation'),
 
 COMMIT;
