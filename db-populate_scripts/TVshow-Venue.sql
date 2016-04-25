@@ -28,8 +28,8 @@ INSERT INTO performance VALUES
 (date('2014-11-22'), null, 'MBC Dream Center', 'Mamamoo'),
 (date('2014-11-19'), null, 'Bitmaru Broadcasting Center', 'Mamamoo'),
 (date('2016-03-05'), null, 'MBC Dream Center', 'Mamamoo'),
-(date('2015-08-22'), null, 'MBC Dream Center', "Girls' Generation"),
-(date('2014-03-28'), null, 'KBS New Wing Open Hall', "Girls' Generation"),
+(date('2015-08-22'), null, 'MBC Dream Center', 'Girls'' Generation'),
+(date('2014-03-28'), null, 'KBS New Wing Open Hall', 'Girls'' Generation'),
 (date('2016-04-14'), null, 'CJ E&M Center Studio', 'Block B');
 
 
