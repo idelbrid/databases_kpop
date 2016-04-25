@@ -1,3 +1,4 @@
+START TRANSACTION;
 INSERT INTO week (
 	SELECT date FROM generate_series( '2007-04-22'::date, 
 	    '2016-04-19'::date, '7 days'::interval) date
@@ -47,7 +48,18 @@ INSERT INTO artist VALUES
 ('Lena Park', date('1993-01-01'), 'LOEN Entertainment'),
 ('PSY', date('2001-01-12'), 'YG Entertainment'),
 ('Girls'' Generation', date('2007-08-05'), 'S.M. Entertainment'),
-('Leessang', date('01-01-2002'), NULL);
+('Leessang', date('01-01-2002'), NULL),
+('Ailee', date('2012-02-06'), 'YMC Entertainment'),
+('BIGBANG', date('2006-08-19'), 'YG Entertainment'),
+('CNBLUE', date('2010-01-14'), 'FNC Entertainment'),
+('Davichi', date('2008-02-04'), 'CJ E&M'),
+('EXO', date('2012-01-30'), 'S.M. Entertainment'),
+('Mamamoo', date('2014-06-19'), 'Rainbow Bridge World'),
+('Miss A', date('2010-07-01'), 'JYP Entertainment'),
+('Super Junior', date('2005-11-06'), 'S.M. Entertainment'),
+('TVXQ', date('2004-01-14'), 'S.M. Entertainment'),
+('Wonder Girls', date('2001-02-10'), 'JYP Entertainment'),
+('Kim Tae-yeon', date('2015-11-08'), 'S.M. Entertainment');
 
 INSERT INTO album VALUES 
 ('The Boys', 'Girls'' Generation', date('2011-11-19'), 457100, 'Electropop'),
@@ -61,6 +73,30 @@ INSERT INTO album VALUES
 ('Psy 6 (Six Rules), Part 1', 'PSY', date('2012-07-15'), 
 106594, 'Hip hop');
 
+INSERT INTO album VALUES  -- YICHEN
+('Vivid','Ailee',date('2015-10-01'),4554,'K-pop'),
+('Bigbang Vol.1','BIGBANG',date('2006-12-21'),222460,'Hip-hop'),
+('MADE Series','BIGBANG',date('2016-02-03'),189420,'K-pop'),
+('First Step','CNBLUE',date('2011-03-21'),134732,'Rock'),
+('2gether','CNBLUE',date('2015-09-14'),82789,'Electrorock'),
+('Mystic Ballad','Davichi',date('2013-03-18'),17046,'Ballad'),
+('Davichi Hug','Davichi',date('2015-01-21'),7340,'R&B'),
+('EXODUS','EXO',date('2015-06-03'),1214805,'K-pop'),
+--('Girls'' Generation','Girls'' Generation',date('2007-11-01'),126269,'K-pop'),
+--('The Boys', 'Girls'' Generation', date('2011-11-19'), 457100, 'Electropop'),
+--('Girls'' Generation (Japanese)', 'Girls'' Generation', date('2011-06-01'), 11937, 'K-pop'),
+--('I Got a Boy', 'Girls'' Generation', date('2013-01-01'), 301500, 'K-pop'),
+--('Lion Heart', 'Girls'' Generation', date('2015-08-19'), 148825, 'Electropop'),
+--('Girls & Peace', 'Girls'' Generation', date('2012-11-28'), 1600, 'Bubblegum Pop'),
+--('Love & Peace', 'Girls'' Generation', date('2013-12-10'), 1700, 'Electropop'),
+('Melting', 'Mamamoo', date('2016-02-26'),26167, 'K-pop'),
+('A Class', 'Miss A', date('2011-07-18'),31885, 'Dance-pop'),
+--('Psy 6 (Six Rules), Part 1', 'PSY', date('2012-07-15'),106594, 'Hip hop'),
+('Devil', 'Super Junior', date('2015-07-16'),262725, 'K-pop'),
+('Mirotic', 'TVXQ', date('2008-09-26'),517010, 'K-pop'),
+('Wonder Party', 'Wonder Girls', date('2012-06-03'),27201, 'K-pop'),
+('Coup D''Etat', 'G-Dragon', date('2013-09-13'),209418, 'K-pop'),
+('I', 'Kim Tae-yeon', date('2015-10-07'),119576, 'Pop rock');
 
 INSERT INTO song VALUES
 ('Girls'' Generation', 'Girls'' Generation', 'Girls'' Generation',
@@ -107,6 +143,10 @@ interval '00:03:46', date('2011-10-19'), NULL, FALSE, 'K-pop', TRUE),
 interval '00:03:15', date('2011-10-19'), NULL, FALSE, 'K-pop', FALSE),
 ('How Great Is Your Love', 'The Boys', 'Girls'' Generation', 'KOR',
 interval '00:03:54', date('2011-10-19'), NULL, FALSE, 'K-pop', FALSE),
+('The Boys (English)', 'The Boys', 'Girls'' Generation', 'ENG',
+interval '00:3:47', date('2011-10-19'), NULL, FALSE, 'Electropop', TRUE),
+('Mr. Taxi (Korean)', 'The Boys', 'Girls'' Generation', 'KOR',
+interval '00:3:32', date('2011-12-08'), 1533525, TRUE, 'Electropop', TRUE),
 ('Blue/Tree Frog', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
 interval '00:03:27', date('2012-07-15'), NULL, FALSE, 'Hip Hop', FALSE),
 ('Passionate Goodbye', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
@@ -118,7 +158,36 @@ interval '00:04:39', date('2012-07-15'), NULL, FALSE, 'Hip Hop', FALSE),
 ('What Would Have Been?', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
 interval '00:04:03', date('2012-07-15'), NULL, FALSE, 'Hip Hop', FALSE),
 ('Never Say Goodbye', 'Psy 6 (Six Rules), Part 1', 'PSY', 'KOR',
-interval '00:03:21', date('2012-07-15'), NULL, FALSE, 'K-pop', FALSE);
+interval '00:03:21', date('2012-07-15'), NULL, FALSE, 'K-pop', FALSE),
+('Coup D''Etat', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:02:58', date('2013-09-02'), NULL, TRUE, 'Hip Hop', TRUE),
+('MichiGO', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:3:28', date('2013-04-20'), 287998, TRUE, 'Electro-hop', TRUE),
+('Niliria', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:2:52', date('2013-09-02'), NULL, TRUE, 'Hip Hop', FALSE),
+('R.O.D.', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:3:56', date('2013-09-02'), NULL, FALSE, 'Hip Hop', FALSE),
+('Black', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:3:23', date('2013-09-02'), NULL, FALSE, 'K-pop', FALSE),
+('Who You?', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:3:21', date('2013-11-13'), NULL, TRUE, 'K-pop', TRUE),
+('Shake the World', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:2:55', date('2013-09-02'), NULL, FALSE, 'Hip Hop', FALSE),
+('Crooked', 'Coup D''Etat', 'G-Dragon', 'KOR', 
+interval '00:3:45', date('2013-09-05'), NULL, TRUE, 'K-pop', TRUE),
+('Mr. Taxi', 'Girls'' Generation (Japanese)', 'Girls'' Generation', 'JPN',
+interval '00:3:32', date('2011-04-23'), 786115, TRUE, 'Electropop', TRUE),
+('Run Devil Run', 'Girls'' Generation (Japanese)', 'Girls'' Generation', 'JPN',
+interval '00:3:21', date('2011-04-23'), 2171755, TRUE, 'Electropop', TRUE),
+('You-aholic', 'Girls'' Generation (Japanese)', 'Girls'' Generation', 'JPN',
+interval '00:3:29', date('2011-06-01'), NULL, FALSE, 'K-pop', FALSE),
+('Devil', 'Devil', 'Super Junior', 'KOR', 
+interval '00:3:36', date('2015-07-16'), NULL, TRUE, 'K-pop', TRUE),
+('Simply Beautiful', 'Devil', 'Super Junior', 'KOR', 
+interval '00:4:03', date('2015-07-16'), NULL, FALSE, 'K-pop', FALSE),
+('Turtle', 'Mystic Ballad', 'Davichi', 'KOR',
+interval '00:3:44', date('2013-03-03'), NULL, TRUE, 'K-pop', TRUE)
+;
 
 
 INSERT INTO song_ranks VALUES
@@ -139,4 +208,85 @@ INSERT INTO likes VALUES
 ('Fred Durst', 'Gangnam Style', 'Psy 6 (Six Rules), Part 1', 'PSY'),
 ('Ian', 'The Boys', 'The Boys', 'Girls'' Generation'),
 ('Ian', 'I Got a Boy', 'I Got a Boy', 'Girls'' Generation'),
-('Fred Durst', 'Say Yes', 'The Boys', 'Girls'' Generation');
+('Fred Durst', 'Say Yes', 'The Boys', 'Girls'' Generation'),
+('yichen', 'Coup D''Etat', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'MichiGO', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'Niliria', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'R.O.D.', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'Black', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'Who You?', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'Shake the World', 'Coup D''Etat', 'G-Dragon'),
+('yichen', 'Crooked', 'Coup D''Etat', 'G-Dragon'),
+('annie', 'Turtle', 'Mystic Ballad', 'Davichi'),
+('Ian', 'Niliria', 'Coup D''Etat', 'G-Dragon');
+
+INSERT INTO producer VALUES
+('Teddy Riley', date('1967-10-08')),
+('STY', NULL),
+('busbee', NULL),
+('Alex James', NULL),
+('Kalle Engstrom', NULL),
+('Diplo', date('1978-11-10')),
+('Baauer', date('1989-04-30')),
+('Ham Seung-cheon', NULL),
+('Kang Wook-jin', NULL),
+('PSY', date('1977-12-31')),
+('Yoo Gun-hyung', NULL),
+('Yang Hyun-suk', date('1969-01-02'));
+
+INSERT INTO produces VALUES
+('Teddy Riley', 'The Boys', 'The Boys', 'Girls'' Generation'),
+('STY', 'Mr. Taxi', 'Girls'' Generation (Japanese)', 'Girls'' Generation'),
+('busbee', 'Run Devil Run', 'Girls'' Generation (Japanese)', 'Girls'' Generation'),
+('Alex James', 'Run Devil Run', 'Girls'' Generation (Japanese)', 'Girls'' Generation'),
+('Kalle Engstrom', 'Run Devil Run', 'Girls'' Generation (Japanese)', 'Girls'' Generation'),
+('Diplo', 'Coup D''Etat', 'Coup D''Etat', 'G-Dragon'),
+('Baauer', 'Coup D''Etat', 'Coup D''Etat', 'G-Dragon'),
+('Teddy Riley', 'R.O.D.', 'Coup D''Etat', 'G-Dragon'),
+('Ham Seung-cheon', 'MichiGO', 'Coup D''Etat', 'G-Dragon'),
+('Kang Wook-jin', 'MichiGO', 'Coup D''Etat', 'G-Dragon'),
+('PSY', 'Gangnam Style', 'Psy 6 (Six Rules), Part 1', 'PSY'),
+('Yoo Gun-hyung', 'Gangnam Style', 'Psy 6 (Six Rules), Part 1', 'PSY'),
+('Yang Hyun-suk', 'Gangnam Style', 'Psy 6 (Six Rules), Part 1', 'PSY');
+
+INSERT INTO fanclub VALUES
+('Alien','http://cafe.daum.net/aileeonline',9821,'Ailee'),
+('VIP','http://cafe.daum.net/YGBIGBANG',260583,'BIGBANG'),
+('Boice','http://cafe.daum.net/cnblue4',3226,'CNBLUE'),
+('Girls High','http://cafe.daum.net/kraw',6974,'Davichi'),
+('EXO-L',NULL,NULL,'EXO'),
+('Sone','http://cafe.daum.net/milkye',220666,'Girls'' Generation'),                                              
+('MooMoo','http://cafe.daum.net/mamamoo',67276,'Mamamoo'),
+('Say A','http://cafe.daum.net/missA',29533,'Miss A'),
+('PSYcho','http://cafe.daum.net/psylove1',7212,'PSY'),
+('Elfs','http://cafe.daum.net/secondemugame',146175,'Super Junior'),
+('Cassiopeia','http://cafe.daum.net/soul48',543315,'TVXQ'),
+('Wonderful','http://cafe.daum.net/wg070210',73164,'Wonder Girls');
+
+INSERT INTO part_of VALUES('heaven_Taewoo248', 'Alien'),
+('yichen','VIP'),
+('fish_yeon605','Boice'),
+('salad_sooyeon402','Cassiopeia'),
+('snowflake320','Elfs'),
+('annie','MooMoo'),
+('luhanlove3','EXO-L'),
+('winnielouu','Girls High'),
+('Emma233','Say A'),
+('Davi89','Wonderful'),
+('Ian','PSYcho'),
+('Fred Durst','Sone');
+
+INSERT INTO buys VALUES('heaven_Taewoo248', 'Vivid','Ailee'),
+('yichen','Coup D''Etat','G-Dragon'),
+('fish_yeon605','First Step','CNBLUE'),
+('salad_sooyeon402', 'Mirotic', 'TVXQ'),
+('snowflake320', 'Devil', 'Super Junior'),
+('annie', 'Melting', 'Mamamoo'),
+('luhanlove3', 'EXODUS','EXO'),
+('winnielouu', 'Davichi Hug','Davichi'),
+('Emma233', 'A Class','Miss A'),
+('Davi89', 'Wonder Party', 'Wonder Girls'),
+('Ian', 'Psy 6 (Six Rules), Part 1','PSY'),
+('Fred Durst', 'I', 'Kim Tae-yeon');
+
+END;

@@ -12,7 +12,7 @@ CREATE TABLE languages(
 CREATE TABLE company(
 	name VARCHAR primary key,
 	ceo VARCHAR,
-	revenue INTEGER CHECK(revenue >= 0),
+	revenue BIGINT CHECK(revenue >= 0),
 	country CHAR(3), 
 
 	FOREIGN KEY (country)
