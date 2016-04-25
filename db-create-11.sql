@@ -191,7 +191,8 @@ CREATE TABLE album_ranks(
 CREATE TABLE appears_on (
 	artist_name VARCHAR REFERENCES artist(name), 
 	show_name VARCHAR REFERENCES TV_SHOW(name),
-	PRIMARY KEY (artist_name, show_name)
+	episode_date date,
+	PRIMARY KEY (artist_name, show_name, episode_date)
 	
 );
 
