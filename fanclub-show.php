@@ -3,15 +3,25 @@ require_once './dbsetup.php';
 
 function getQuery($name){
     // echo "$name";
+    global $db;
     $get = $_GET[$name];
-    // echo "yo $get";
-    $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE $name = '$get';";
-    // print_r($sql);
-    return $sql;
+    //echo "yo $name, lala  $get";
+    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :sname;");    
+    $query->execute(array(':sname' => $get));
+    $err = $query->errorInfo();
+    //foreach($err as $row){
+	//echo "$row <br>";
+	//foreach($row as $a){
+	//	echo "$a <br>";
+	//} 
+    //}
+//    $query->debugDumpParams();
+// print_r($sql);
+    return $query;
 }
 
 function update($artist, $name,$website,$members){
-    echo "Updated<br>";
+    echo "<strong>Updated</strong><br>";
     global $db;
     //if(empty($db))
     //    echo "no db";
@@ -27,9 +37,10 @@ function update($artist, $name,$website,$members){
     //        echo "<br>" . $a . "<br>";
     //}
 
-    $sqls = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
-    echo $sqls;
-    return $sqls;
+    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :name;");
+    $query->execute(array(':name' => $name)); 
+ //  echo $sqls;
+    return $query;
 }
 ?>
 
@@ -46,7 +57,7 @@ function update($artist, $name,$website,$members){
 <?php
 
 if($_POST['artist']){
-    $sql = update($_POST['artist'],$_POST['name'],$_POST['website'],$_POST['members']);
+    $stmt = update($_POST['artist'],$_POST['name'],$_POST['website'],$_POST['members']);
     //echo $sql . "lala \n";
     goto exec;
 }
@@ -76,35 +87,36 @@ elseif($_GET['name']){
 
     // $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
     exea:
-    $sql = getQuery('name');
+    $stmt = getQuery('name');
     goto exec;
 
     exeb:
-    $sql = getQuery('artist');
+    $stmt = getQuery('artist');
     goto exec;
 
     exec:
-    if(!($db->query($sql)->fetch())){
+	$rows=$stmt->fetchAll();
+    if(!empty($row['artist'])){
          echo "No found artist, redircting to fanbase list";
         header( "refresh:2; url=fanclub-list.php" );
     }else{
-        foreach($db->query($sql) as $row){
-        $name = $row['name'];
-        $artist = $row['artist'];
-        $website = $row['website'];
-        $members = $row['num_members'];
-    }
+	foreach($rows as $row){
+        	$name = $row['name'];
+        	$artist = $row['artist'];
+        	$website = $row['website'];
+        	$members = $row['num_members'];
+		//echo "$name, $artist, $website, $members\n";
+	}
     $sql2 = "SELECT * FROM part_of WHERE fanclub_name = '$name';";
     $fans = array();
-    foreach($db->query($sql2) as $row){
-        $fan = $row['fan_username'];
-
+    foreach($db->query($sql2) as $rrow){
+        $fan = $rrow['fan_username'];
         if(!in_array($fan, $fans)){
             // echo '$fan doesnot exist ';
             array_push($fans,$fan);
         }
     }
-    
+    //echo "$name, $website, $members falalalala\n";
     //is above keeped? maybe echo if error
     if(empty($name)) $name=" ";
     if(empty($website)) $website=" ";

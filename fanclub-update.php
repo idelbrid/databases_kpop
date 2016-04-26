@@ -14,6 +14,7 @@ require_once './dbsetup.php';
 <?php
     if($_GET['artist']&$_GET['name']&$_GET['members']&$_GET['website']){
         $artist = $_GET['artist'];
+	echo "$artist\n";
         $name = $_GET['name'];
         $members = $_GET['members'];
         $website = $_GET['website'];
@@ -34,15 +35,12 @@ require_once './dbsetup.php';
 ?>
 
 <form action='fanclub-show.php' method='post'>
-        <label>Artist: 
-            <?php echo $artist; ?>
-            <input type=hidden name="artist" value="<?php echo $artist; ?>">
-        </label><br>
+        <input type=hidden name="artist" value="<?php echo $artist; ?>">
         <label>Fanbase name: 
             <input type=text name="name" value="<?php echo $name; ?>">
         </label><br>
         <label>members: 
-            <input type=text name="members" value="<?php echo $members; ?>">
+            <input type=number name="members" min="0" step="1" value="<?php echo $members; ?>">
         </label><br>
         <label>website page: 
             <input type=text name="website" value="<?php echo $website; ?>">
