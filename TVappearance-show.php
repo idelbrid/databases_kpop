@@ -1,16 +1,20 @@
 <?php
 require_once './dbsetup.php';
 
-function getQuery($artist){
+function getQuery($artist_name, $show_name){
     // echo "$name";
-    $get = $_GET[$artist];
+    $get = $_GET[$artist_name];
+    $get_s = $_GET[$show_name];
     // echo "yo $get";
-    $sql = "SELECT artist_name, show_name, episode_date FROM appears_on WHERE $artist = '$get';";
+    // echo "yo $get_s";
+    $sql = "SELECT artist_name, show_name, episode_date 
+            FROM appears_on 
+            WHERE $artist_name = $get AND $show_name = $get_s;";
     // print_r($sql);
     return $sql;
 }
 
-function update($artist, $show, $date){
+function update($artist_name, $show_name, $episode_date){
     echo "Updated<br>";
     global $db;
     //if(empty($db))
@@ -18,8 +22,8 @@ function update($artist, $show, $date){
     //if($db)
     //    echo "indeed has db<br>";
     //echo "$artist $name $website $members";
-    $query = $db->prepare("UPDATE appears_on SET (show_name, episode_date) = (:show, :EPdate) WHERE artist_name=:artist_name;");
-    $query->execute(array(':show' => $show, ':EPdate' => $date, ':artist' => $artist));
+    $query = $db->prepare("UPDATE appears_on SET (show_name, episode_date) = (:show_name, :episode_date) WHERE artist_name=:artist_name;");
+    $query->execute(array(':show_name' => $show_name, ':episode_date' => $episode_date, ':artist_name' => $artist_name));
     //$err = $query->errorInfo();
     //foreach($err as $row){
     //    echo "<br>" . $row . "<br>";
@@ -27,8 +31,8 @@ function update($artist, $show, $date){
     //        echo "<br>" . $a . "<br>";
     //}
 
-    $sqls = "SELECT artist_name, show_name, episode_date FROM appears_on WHERE artist_name = '$artist';";
-    echo $sqls;
+    $sqls = "SELECT artist_name, show_name, episode_date FROM appears_on WHERE artist_name = '$artist_name';";
+    //echo $sqls;
     return $sqls;
 }
 ?>
@@ -50,14 +54,13 @@ if($_POST['artist_name']){
     //echo $sql . "lala \n";
     goto exec;
 }
-elseif($_GET['show_name']){
-    $name = $_GET['show_name'];
+if($_GET['artist_name'] && $_GET['show_name']){
+    $artist_name = $_GET['artist_name'];
+    $show_name = $_GET['show_name'];
+
     // echo "yehn" . $name;
-    goto exea;
-}elseif($_GET['artist_name']){
-    $name = $_GET['artist_name'];
-    // echo "yeha" . $name;
     goto exeb;
+
 }else{
     // echo "asasasa\n";
     // if($_POST['']){
@@ -75,13 +78,13 @@ elseif($_GET['show_name']){
 }
 
     // $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
-    exea:
-    $sql = getQuery('show_name');
-    goto exec;
+    // exea:
+    // $sql = getQuery('show_name');
+    // goto exec;
 
     exeb:
-    $sql = getQuery('artist_name');
-    goto exec;
+    $sql = getQuery('artist_name', 'show_name');
+    
 
     exec:
     if(!($db->query($sql)->fetch())){
@@ -89,8 +92,8 @@ elseif($_GET['show_name']){
         header( "refresh:2; url=TVappearance-list.php" );
     }else{
         foreach($db->query($sql) as $row){
-        $artist = $row['artist_name'];
-        $show = $row['show_name'];
+        $artist_name = $row['artist_name'];
+        $show_name = $row['show_name'];
         $EPdate = $row['episode_date'];
     }
     // $sql2 = "SELECT * FROM part_of WHERE fanclub_name = '$name';";
@@ -105,30 +108,21 @@ elseif($_GET['show_name']){
     // }
     
     //is above keeped? maybe echo if error
-    if(empty($show)) $show=" ";
-    if(empty($EPdate)) $EPdate=" ";
-    
+    if(empty($artist_name)) $artist_name=" ";
+    if(empty($show_name)) $show_name=" ";
+    if(empty($EPdate)) $episode_date=0;
     echo "
         <h2>$artist 's TV Show Appearances</h2>
         <a href='
-        fanclub-update.php?artist=" . urlencode($artist) . "&name=" . urlencode($name) . "&members=$members&website=" . urlencode($website) . "
-        '>Edit</a>
+        TVappearance-update.php?artist_name=" . urlencode($artist_name) . "&show_name=" . urlencode($show_name) . "&episode_date=$episode_date."
+        Edit</a>
         <ul>
-            <li>Artist: $artist</li>
-            <li>TV show: $show</li>
-            <li>Date: $EPdate</li>
+            <li>Artist: $artist_name</li>
+            <li>TV show: $show_name</li>
+            <li>Date: $episode_date</li>
             </li>
-            ";
-    //     foreach($fans as $afan){
-    //        if($afan!=NULL| !empty($afan)){
-    //             echo "<li>$afan</li>";
-    //         }
-    //         else{
-    //             echo "NONE";
-    //         }
-    //     }
-    // echo "</ul></li>
-    //     </ul>
+          
+    //    
     // ";
     }
     
