@@ -46,6 +46,9 @@
                 <li>
                     <a href="./TVappearance-list.php">TV Show Appearances</a>
                 </li>
+                <li>
+                    <a href="./artist-list.php">Artists</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
