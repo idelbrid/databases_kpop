@@ -13,11 +13,11 @@ require_once './dbsetup.php';
     <hr>
 <?php
     if($_GET['artist_name']&$_GET['show_name']&$_GET['episode_date']){
-        $artist = $_GET['artist_name'];
-        $show = $_GET['show_name'];
-        $date = $_GET['episode_date'];
+        $artist_name = $_GET['artist_name'];
+        $show_name = $_GET['show_name'];
+        $episode_date = $_GET['episode_date'];
 
-        echo "$artist, $name, $members";
+        echo "$artist_name, $show_name, $episode_date";
     //     goto form:
     }else{
         echo "Edit page cannot be edit directly,";
@@ -35,14 +35,14 @@ require_once './dbsetup.php';
 
 <form action='TVappearance-show.php' method='post'>
         <label>Artist: 
-            <?php echo $artist; ?>
-            <input type=hidden name="artist" value="<?php echo $artist; ?>">
+            <?php echo $artist_name; ?>
+            <input type=hidden name="artist_name" value="<?php echo $artist_name; ?>">
         </label><br>
         <label>TV Show: 
-            <input type=text name="show" value="<?php echo $show; ?>">
+            <input type=text name="show_name" value="<?php echo $show_name; ?>">
         </label><br>
         <label>Date: 
-            <input type=text name="date" value="<?php echo $date; ?>">
+            <input type=text name="episode_date" value="<?php echo $episode_date; ?>">
         </label><br>
         <input type=submit value=submit>
         <button onclick='window.history.back();'>cancel</button>

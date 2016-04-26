@@ -105,11 +105,11 @@ elseif($_GET['show_name']){
     // }
     
     //is above keeped? maybe echo if error
-    if(empty($name)) $name=" ";
-    if(empty($website)) $website=" ";
-    if(empty($members)) $members=0;
+    if(empty($show)) $show=" ";
+    if(empty($EPdate)) $EPdate=" ";
+    
     echo "
-        <h2>$artist 's Fanbase Details</h2>
+        <h2>$artist 's TV Show Appearances</h2>
         <a href='
         fanclub-update.php?artist=" . urlencode($artist) . "&name=" . urlencode($name) . "&members=$members&website=" . urlencode($website) . "
         '>Edit</a>
