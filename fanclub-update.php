@@ -46,7 +46,7 @@ require_once './dbsetup.php';
             <input type=text name="website" value="<?php echo $website; ?>">
         </label><br>
         <input type=submit value=submit>
-        <button onclick='window.history.back();'>cancel</button>
+        <button><a href="fanclub-show.php?name=<?php echo $name; ?>">cancel</button>
 </form>
     
     <?php include_once './footer.php'?>
