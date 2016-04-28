@@ -16,11 +16,8 @@ require_once './dbsetup.php';
 	}
 	?>
 	<?php include_once './header.php'?>
-		<h2>TV Show Appearances</h2>
+		<h2>Artist List</h2>
 		<section id="search">
-			<p> 
-			Look up what TV shows your favorite K-pop idols have appeared in!
-			</p>
 			<form action="./TVappearance-show.php" method="get">
 				<label>Artist name: <input type="text" name="name" required></label>
 				<input type="submit" value="Search">
@@ -39,8 +36,8 @@ require_once './dbsetup.php';
 				$artist_name = $row['artist_name'];
 				$show_name = $row['show_name'];
 				$episode_date = $row['episode_date'];
-				$link = "./TVappearance-show.php?name=";
-			echo "<tr><td>$artist_name</td><td>$show_name</td><td>$episode_date</td><td><a href=$link" . urlencode($artist_name) .">details</a></td></tr>";
+				$link = "./artist-show.php?name=";
+			echo "<tr><td>$name</td><td>$debut_date</td><td><a href=$link" . urlencode($name) .">more information</a></td></tr>";
 			}
 		?>
 		
