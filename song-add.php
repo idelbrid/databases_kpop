@@ -5,6 +5,9 @@
 
     $genrequery = 'SELECT DISTINCT genre FROM song;';
     $genrest = $db->query($genrequery);
+
+    $albumst = $db->query('SELECT DISTINCT name as album FROM album ORDER BY album;');
+    $artistst = $db->query('SELECT DISTINCT artist_name as artist FROM album ORDER BY artist_name;');
 ?>
 <html>
 <head>
@@ -21,10 +24,26 @@
     <input type="text" name="song_name" value="Gangnam Style" required/>
     <br>
     <label>Song's Album Name</label>
-    <input type="text" name="album" value="Psy 6 (Six Rules), Part 1" required/>
+    <select name="album">
+    <?php
+        foreach($albumst as $row){
+            $val = $row['album'];
+            $select = $val == 'Psy 6 (Six Rules), Part 1'? ' selected="selected" ' : '';
+            echo "<option value=\"$val\" $select>$val</option>";
+        }
+    ?>
+    </select>
     <br>
+    <select name="artist">
     <label>Song's Artist Name</label>
-    <input type="text" name="artist" value="PSY" required/>
+    <?php
+        foreach($artistst as $row){
+            $val = $row['artist'];
+            $select = $val == 'PSY'? ' selected="selected" ' : '';
+            echo "<option value=\"$val\" $select>$val</option>";
+        }
+    ?>
+    </select>
     <br>
     <label>Song's Language</label>
     <select name="language">

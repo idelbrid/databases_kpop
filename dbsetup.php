@@ -11,7 +11,7 @@ $dsn = "$dbtype:host=$dbhost;dbname=$dbname";
 
 try{
 	$db = new PDO($dsn, $dbuser, $dbpass);
-        print_r("yeh");
+//        print_r("yeh");
 } catch (PDOException $e) {
 	print "An error occurred when connecting to the database: " . $e->getmessage();
 	print "<br>dbname $dbname<br>";

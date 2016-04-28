@@ -217,6 +217,11 @@ if($get OR $post)
                     "album=" . urlencode($album) . "&" .
                     "artist=" . urlencode($artist);
                 echo "Is the information above wrong? Click <a href=$link>here</a> to update it!";
+                $fanlink = "./likes-list.php?" .
+                    "song_name=" . urlencode($name)."&" .
+                    "album=" . urlencode($album) . "&" .
+                    "artist=" . urlencode($artist);
+                echo "<br><a href='$fanlink'>Likes</a>";
                 ?>
             </p>
 

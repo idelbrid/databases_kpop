@@ -73,6 +73,8 @@ if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
                 if ($i == sizeof($featured) - 2)
                     $feature_string .= 'and ';
             }
+            if (!empty($feature_string))
+                $feature_string = " (featuring $feature_string)";
 
             $fans = array();
             while ($row = $likes_stmt->fetch())
@@ -80,9 +82,16 @@ if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
                 $fans[] = $row['fan'];
             }
             ?>
-            <p>
-                <?php echo $name; echo !empty($featured) ?
-                    " (featuring ".$feature_string.')' : ''?>
+            <p> <?php if (empty($fans))
+                {
+                    echo "No one likes $name$feature_string!";
+                    echo " That's so sad :(";
+                }
+                else
+                {
+                    echo "These fans like $name$feature_string:";
+                }?>
+
 
             <u1>
             <?php
