@@ -25,7 +25,7 @@ CREATE TABLE fan (
 	username VARCHAR PRIMARY KEY,
 	name VARCHAR,
 	birth_date DATE,
-	gender CHAR
+	gender CHAR CHECK (gender='M' OR gender='F' OR gender='O')
 );
 CREATE TABLE artist(
 	name VARCHAR PRIMARY KEY,
@@ -96,7 +96,7 @@ CREATE TABLE trainee(
 	birth_date DATE,
 	debuted BOOLEAN,
 	gender CHAR(1),
-	nationality VARCHAR,
+	nationality CHAR(3),  --REFERENCES country(abbv)
 	role VARCHAR,
 	stage_name VARCHAR,
 	company VARCHAR,
@@ -136,8 +136,8 @@ CREATE TABLE features (
 	song_name VARCHAR, 
 	song_album VARCHAR,
 	song_artist VARCHAR,
-	artist_name VARCHAR-- REFERENCES artist(name),
-
+	artist_name VARCHAR,-- REFERENCES artist(name),
+	PRIMARY KEY (song_name, song_album, song_artist, artist_name)
 	--FOREIGN KEY (song_name, song_album, song_artist)
 	--REFERENCES song(name, album, artist)
 );
@@ -182,7 +182,7 @@ CREATE TABLE song_ranks(
 	song_artist VARCHAR,
 	song_album VARCHAR,
 	week DATE,-- REFERENCES week(day_starting_week),
-	PRIMARY KEY (song_name, week)
+	PRIMARY KEY (song_name, song_album, song_artist, week)
 	--FOREIGN KEY (song_name, song_album, song_artist)
 	--REFERENCES song(name, album, artist)
 
@@ -194,7 +194,7 @@ CREATE TABLE album_ranks(
 	album VARCHAR,
 	album_artist VARCHAR,
 	week DATE,-- REFERENCES week(day_starting_week),
-	PRIMARY KEY (album, week)
+	PRIMARY KEY (album, artist, week)
 	--FOREIGN KEY (album, album_artist)
 	--REFERENCES album(name, artist_name)
 
@@ -232,7 +232,8 @@ CREATE TABLE produces(
 	producer VARCHAR,-- REFERENCES producer(prod_name),
 	song VARCHAR,
 	song_album VARCHAR,
-	song_artist VARCHAR
+	song_artist VARCHAR,
+	PRIMARY KEY (producer, song, song_album, song_artist)
 	--FOREIGN KEY (song, song_album, song_artist)
 	--REFERENCES song(name, album, artist)
 );

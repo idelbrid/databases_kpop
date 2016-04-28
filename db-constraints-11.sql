@@ -82,6 +82,9 @@ ALTER TABLE produces ADD FOREIGN KEY( producer )
 				REFERENCES producer(prod_name);
 ALTER TABLE produces ADD FOREIGN KEY (song, song_album, song_artist)
 				REFERENCES song(name, album, artist);
+				
+ALTER TABLE trainee ADD FOREIGN KEY(nationality)
+				REFERENCES country(abbv);
 
 ALTER TABLE tv_show ADD CHECK(start_date < end_date);
 ALTER TABLE performance ADD CHECK (tickets_sold >= 0);
