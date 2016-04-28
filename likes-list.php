@@ -82,7 +82,7 @@ if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
                 $fans[] = $row['fan'];
             }
             ?>
-            <p> <?php if (empty($name))
+            <p> <?php if (empty($fans))
                 {
                     echo "No one likes $name$feature_string!";
                     echo " That's so sad :(";
