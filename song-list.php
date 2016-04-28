@@ -2,6 +2,13 @@
 require_once './dbsetup.php';
 
 $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
+try{
+	$songstmt = $db->query("SELECT DISTINCT name FROM song ORDER BY name");
+	$albumstmt = $db->query("SELECT DISTINCT album FROM song ORDER BY album");
+	$artiststmt = $db->query("SELECT DISTINCT artist FROM song ORDER BY artist");
+
+} catch (Exception $e) {echo "There was a problem! $e->getMessage()";}
+
 ?>
 
 <html>
@@ -18,13 +25,40 @@ $sql = "SELECT name, album, artist FROM song ORDER BY artist, album, name";
 		isn't in our system, why not <a href="song-add.php">add it</a>?
         <form action="song-show.php" method="GET">
             <label>Song Name</label>
-            <input type="text" name="song_name"/>
+			<select name="song_name">
+				<?php
+				foreach($songstmt as $row)
+				{
+					$song = $row['name'];
+					$enc = htmlspecialchars($song);
+					echo "<option value=\"$enc\">$song</option>";
+				}
+				?>
+			</select>
             <br>
             <label>Song's Album Name</label>
-            <input type="text" name="album"/>
+			<select name="album">
+				<?php
+				foreach($albumstmt as $row)
+				{
+					$album = $row['album'];
+					$enc = htmlspecialchars($album);
+					echo "<option value=\"$enc\">$album</option>";
+				}
+				?>
+			</select>
             <br>
             <label>Song's Artist Name</label>
-            <input type="text" name="artist"/>
+			<select name="artist">
+				<?php
+				foreach($artiststmt as $row)
+				{
+					$artist = $row['artist'];
+					$enc = htmlspecialchars($artist);
+					echo "<option value=\"$enc\">$artist</option>";
+				}
+				?>
+			</select>
             <br>
             <input type="submit" value="Enter"/>
         </form>

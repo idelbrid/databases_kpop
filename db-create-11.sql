@@ -221,7 +221,8 @@ CREATE TABLE likes(
 	fan_username VARCHAR,-- REFERENCES fan(username),
 	song VARCHAR,
 	album VARCHAR,
-	artist VARCHAR
+	artist VARCHAR,
+	PRIMARY KEY (fan_username, song, album, artist)
 	--FOREIGN KEY (song, album, artist)
 	--REFERENCES song(name, album, artist)
 );
