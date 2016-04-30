@@ -228,7 +228,7 @@ if($get OR $post)
         }
         else
         {
-            echo "No data found for this song! :(";
+            echo "No data found for this song, $name on $album by $artist :(";
             echo "<br>Why not <a href='song-add.php'>add it</a>?";
 
         }
