@@ -10,9 +10,8 @@ require_once './dbsetup.php';
     <?php include_once './header.php'?>
 
     <?php
-if( !empty($_POST['song_name']) and isset( $_POST["song_name"]) and
-    !empty($_POST['album']) and isset($_POST["album"]) and
-    !empty($_POST['artist']) and isset($_POST["artist"]))
+if( $_SERVER['REQUEST_METHOD'] == 'POST' and
+    !empty($_POST['song_name']) and !empty($_POST['album']) and !empty($_POST['artist']))
 {
     $post = true;
     $name = $_POST['song_name'];
@@ -76,7 +75,6 @@ if($post)
             $updatestmt = $db->prepare($updatesql);
 
             $language = $_POST['language'];
-//            $duration = $_POST['duration'];
             $minutes = $_POST['minutes'];
             $seconds = $_POST['seconds'];
             $duration = "00:0$minutes:$seconds";
@@ -85,6 +83,7 @@ if($post)
             $single = $_POST['single'] ? 'TRUE' : 'FALSE';
             $genre = $_POST['genre'];
             $music_video = $_POST['music_video'] ? 'TRUE' : 'FALSE';
+
 
             $replacements = array(
                 ':slanguage' => $language,

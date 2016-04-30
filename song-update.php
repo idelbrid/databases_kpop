@@ -1,6 +1,6 @@
 <?php
 require_once './dbsetup.php';
-$getquery = 'SELECT languages.language as lang, duration, release_date, copies_sold, '.
+$getquery = 'SELECT languages.abbv as lang, duration, release_date, copies_sold, '.
     'single, genre, music_video ' .
     'FROM song, languages ' .
     'WHERE name=:sname AND album=:salbum AND artist=:sartist AND song.language=languages.abbv;';
@@ -30,6 +30,7 @@ if($get){
         if (!empty($row))
         {
             $language = $row["lang"];
+            echo "language : ". $language;
             $duration = $row["duration"];
             $release_date = $row['release_date'] ? $row['release_date'] : "-";
             $copies_sold = $row['copies_sold'];
@@ -40,6 +41,7 @@ if($get){
     
 ?>
 <html>
+            
 <head>
     <title>Modifying Song in Database</title>
 </head>
@@ -83,7 +85,7 @@ if($get){
     <input type="number" value="<?php echo $copies_sold?>" min="0" step="1" name="copies_sold">
     <br>
     <label>Released as a Single?</label>
-    <input type="checkbox" name="single" <?php if($single){echo 'checked="checked"';}?>>
+    <input type="checkbox" name="single" <?php if($single=='TRUE'){echo 'checked="checked"';}?>>
     <br>
     <label>Genre</label>
     <select name="genre">
