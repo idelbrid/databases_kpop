@@ -23,6 +23,11 @@ $del_output = $del_stmt->execute(array(
     ':salbum' => $album,
     ':sartist' => $artist
 ));
+if (!$del_output)
+{
+    echo "<html>Unknown error in deleting!.</html>";
+    die;
+}
 ?>
 
 <html>

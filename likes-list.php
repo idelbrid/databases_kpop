@@ -118,22 +118,9 @@ if( !empty($_GET['song_name']) and isset( $_GET["song_name"]) and
 else
 {
     echo "<h3>Form problem</h3>";
-    echo "Sorry! Invalid song information given! Please try again with the search below.<br>"
+    echo "Sorry! I couldn't find that page!<br>"
     ?>
-    <form action="song-show.php" method="GET">
-        <label>Please enter a song's name, album, and artist.</label>
-        <br>
-        <label>Song Name</label>
-        <input type="text" name="song_name"/>
-        <br>
-        <label>Song's Album Name</label>
-        <input type="text" name="album"/>
-        <br>
-        <label>Song's Artist Name</label>
-        <input type="text" name="artist"/>
-        <br>
-        <input type="submit" value="Enter"/>
-    </form>
+
     <?php
 }
 ?>

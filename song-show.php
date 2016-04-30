@@ -103,6 +103,7 @@ if($post)
         }
         catch(ErrorException $e){
             echo "Error with inserting the song! ". $e->getMessage();
+            die;
         }
     }
 }
