@@ -30,7 +30,7 @@ if($get){
         if (!empty($row))
         {
             $language = $row["lang"];
-            echo "language : ". $language;
+          
             $duration = $row["duration"];
             $release_date = $row['release_date'] ? $row['release_date'] : "-";
             $copies_sold = $row['copies_sold'];
