@@ -44,7 +44,7 @@
                     <a href="./fanclub-list.php">Fanclubs</a>
                 </li>
                 <li>
-                    <a href="./TVappearance-list.php">TV Show Appearances</a>
+                    <a href="./TVshow-list.php">TV Show Appearances</a>
                 </li>
                 <li>
                     <a href="./artist-list.php">Artists</a>
