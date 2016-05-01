@@ -6,7 +6,7 @@ function getQuery($name){
     global $db;
     $get = $_GET[$name];
     //echo "yo $name, lala  $get";
-    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :sname;");    
+    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE artist = :sname;");    
     $query->execute(array(':sname' => $get));
     $err = $query->errorInfo();
     //foreach($err as $row){
