@@ -87,7 +87,8 @@ elseif($_GET['name']){
 
     // $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
     exea:
-    $stmt = getQuery('name');
+    $stmt = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :aname;");    
+    $stmt->execute(array(':aname' => $name));
     goto exec;
 
     exeb:
