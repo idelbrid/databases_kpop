@@ -6,7 +6,7 @@ function getQuery($name){
     global $db;
     $get = $_GET[$name];
     //echo "yo $name, lala  $get";
-    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :sname;");    
+    $query = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE artist = :sname;");    
     $query->execute(array(':sname' => $get));
     $err = $query->errorInfo();
     //foreach($err as $row){
@@ -87,7 +87,8 @@ elseif($_GET['name']){
 
     // $sql = "SELECT name,website,num_members,artist FROM fanclub WHERE name = '$name';";
     exea:
-    $stmt = getQuery('name');
+    $stmt = $db->prepare("SELECT name,website,num_members,artist FROM fanclub WHERE name = :aname;");    
+    $stmt->execute(array(':aname' => $name));
     goto exec;
 
     exeb:
