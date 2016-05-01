@@ -1,6 +1,8 @@
 ###KPOP DATABASES PROJECT###
 
-This repository contains html/php code for a website based on a kpop database, which we have designed. The database schema was created using the db-create-11.sql script. 
+Authors - Ian Delbridge, Jie Deng, Annie He, and Yichen Lu
+
+This repository contains html/php/css code for a website based on a kpop database, which we have designed. The database schema and data are also included 
 
 
 
