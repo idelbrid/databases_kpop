@@ -10,9 +10,16 @@ function getQuery($name){
 function update($name,$debut_date,$company_name){
     echo " updated successfully<br>";
     global $db;
-    $query = $db->prepare("UPDATE artist SET (name, debut_date, company_name) = (:name, :debut_date, :company_name) WHERE name=:name;");
-    $query->execute(array(':name' => $name, ':debut_date' => $debut_date, ':company_name' => $company_name));
-    $sqls = "SELECT name, debut_date, company_name FROM artist WHERE name = '$name';";
+    $query = $db->prepare("UPDATE artist SET (name, debut_date, company_name) = (:name::VARCHAR, :debut_date::DATE, :company_name::VARCHAR) WHERE name=:name::VARCHAR;");
+    $queryresult = $query->execute(array(':name' => $name, ':debut_date' => $debut_date, ':company_name' => $company_name));
+    //echo "Update successful? $queryresult<br>";
+    //foreach($query->errorInfo() as $row){
+    //    echo "row $row<br>";
+	//foreach($row as $a){
+	//    echo "value $a<br>";
+	//}
+    //}
+	$sqls = "SELECT name, debut_date, company_name FROM artist WHERE name = '$name';";
 	return $sqls;
 }
 ?>
