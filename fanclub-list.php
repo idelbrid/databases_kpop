@@ -35,7 +35,7 @@ require_once './dbsetup.php';
 				$artist = $row['artist'];
 				$name = $row['name'];
    			$link = "./fanclub-show.php?name=";
-			echo "<tr><td>$artist</td><td>$name</td><td><a href=$link" . urlencode($name) .">go</a></td></tr>";
+			echo "<tr><td>$artist</td><td>$name</td><td><a href=$link" . urlencode($artist) .">view information</a></td></tr>";
 			//echo <tr><td>$row['artist']</td><td>$row['name']</td><td>lala</td></tr>";
 			}
 		?>
