@@ -11,7 +11,14 @@ function update($name, $start_date, $end_date, $type, $channel, $country, $langu
     echo " updated successfully<br>";
     global $db;
     $query = $db->prepare("UPDATE TV_SHOW SET (name, start_date, end_date, type, channel, country, language) = (:name, :start_date, :end_date, :type, :channel, :country, :language) WHERE name=:name;");
-    $query->execute(array(':name' => $name, ':start_date' => $start_date, ':end_date' => $end_date, ':type' => $type, ':channel' => $channel, ':country' => $country, ':language' => $language));
+    $queryresult = $query->execute(array(':name' => $name, ':start_date' => $start_date, ':end_date' => $end_date, ':type' => $type, ':channel' => $channel, ':country' => $country, ':language' => $language));
+    echo "Update successful? $queryresult<br>";
+    foreach($query->errorInfo() as $row){
+        echo "row $row<br>";
+	foreach($row as $a){
+	    echo "value $a<br>";
+	}
+    }
     $sqls = "SELECT name, start_date, end_date, type, channel, country, language FROM TV_SHOW WHERE name = '$name';";
     return $sqls;
 }
