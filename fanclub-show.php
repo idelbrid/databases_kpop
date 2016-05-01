@@ -96,7 +96,7 @@ elseif($_GET['name']){
 
     exec:
 	$rows=$stmt->fetchAll();
-    if(!empty($rows['artist'])){
+    if(empty($rows)){
          echo "No found artist, redircting to fanbase list";
         header( "refresh:2; url=fanclub-list.php" );
     }else{
