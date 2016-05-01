@@ -28,16 +28,19 @@ if (!$del_output)
     echo "<html>Unknown error in deleting!.</html>";
     die;
 }
-?>
+else {
+    ?>
 
-<html>
-<head>
-<meta http-equiv="refresh" content="0; url=./song-list.php">
-<!--    Deleting --><?php //echo $name;?>
-</head>
+    <html>
+    <head>
+        <meta http-equiv="refresh" content="0; url=./song-list.php">
+        <!--    Deleting --><?php //echo $name;?>
+    </head>
 <body>
-    <?php include_once './header.php'?>
-<p>
-    Deleting <?php echo $name;?>
-</p>
-    <?php include_once './footer.php'?>
+    <?php include_once './header.php' ?>
+    <p>
+        Deleting <?php echo $name; ?>
+    </p>
+    <?php include_once './footer.php' ?>
+    <?php
+}?>

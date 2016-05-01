@@ -87,13 +87,21 @@ try{
 				echo "<tr><td>$name</td><td>$album</td><td>$artist</td>" .
                 "<td><a href=$link>Show Details</a> </td> " .
 				"<td><a href=$fanlink>Likes</a></td>";
-				echo "<td><form action='./song-delete.php' method='POST' id='' " .
-                               "onSubmit=\"return confirm('Confirm delete of $name');\"> " .
-                               "<input type='hidden' value='$name' name='song_name'> " .
-                               "<input type='hidden' value='$album' name='album'> " .
-                               "<input type='hidden' value='$artist' name='artist'> " .
-                               "<input type='submit' value='DELETE'> ".
-                "</form></td></tr>";
+				$jsname = json_encode($name);
+                $htname = htmlspecialchars($name, ENT_QUOTES);
+                $htalbum = htmlspecialchars($album, ENT_QUOTES);
+                $htartist = htmlspecialchars($artist, ENT_QUOTES);
+                $htscript = htmlspecialchars("return confirm('Confirm delete of ' + $jsname);");
+                echo <<<EOD
+				<td><form action='./song-delete.php' method='POST' id='' 
+                    onSubmit="$htscript"> 
+                    <input type='hidden' value="$htname" name='song_name'>
+                    <input type='hidden' value="$htalbum" name='album'>
+                    <input type='hidden' value="$htartist" name='artist'>
+                    <input type='submit' value='DELETE'>
+                </form></td></tr>
+EOD;
+               
 			}
 			?>
 		</table>
