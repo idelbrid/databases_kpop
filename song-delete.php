@@ -25,7 +25,14 @@ $del_output = $del_stmt->execute(array(
 ));
 if (!$del_output)
 {
-    echo "<html>Unknown error in deleting!.</html>";
+    echo "<html>$del_output";
+    foreach($db->errorInfo() as $row) {
+        echo $row . '<br>';
+        foreach ($row as $a){
+            echo $a . '<br>';
+        }
+    }
+    echo "Unknown error in deleting!.<html/>";
     die;
 }
 else {

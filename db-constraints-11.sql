@@ -41,17 +41,17 @@ ALTER TABLE part_of ADD FOREIGN KEY (fanclub_name)
 ALTER TABLE song ADD FOREIGN KEY(language)
 				REFERENCES languages(abbv);
 ALTER TABLE song ADD FOREIGN KEY(album, artist)
-				REFERENCES album(name, artist_name);
+				REFERENCES album(name, artist_name) ON DELETE CASCADE;
 				
 ALTER TABLE features ADD FOREIGN KEY(artist_name) 
-					REFERENCES artist(name);
+					REFERENCES artist(name) ON DELETE CASCADE;
 ALTER TABLE features ADD FOREIGN KEY(song_name, song_album, song_artist)
-				REFERENCES song(name, album, artist);
+				REFERENCES song(name, album, artist) ON DELETE CASCADE;
 				
 ALTER TABLE memberOf ADD FOREIGN KEY (artist)
-					REFERENCES artist(name);
+					REFERENCES artist(name) ON DELETE CASCADE;
 ALTER TABLE memberOf ADD FOREIGN KEY (trainee_name, trainee_birthdate)
-				REFERENCES trainee(name, birth_date);
+				REFERENCES trainee(name, birth_date) ON DELETE CASCADE;
 				
 ALTER TABLE TV_SHOW ADD FOREIGN KEY (country)
 						REFERENCES country(abbv);
@@ -59,9 +59,9 @@ ALTER TABLE TV_SHOW ADD FOREIGN KEY (language)
 						REFERENCES languages(abbv);
 						
 ALTER TABLE song_ranks ADD FOREIGN KEY (week)
-				REFERENCES week(day_starting_week);
+				REFERENCES week(day_starting_week) ON DELETE CASCADE;
 ALTER TABLE song_ranks ADD FOREIGN KEY (song_name, song_album, song_artist)
-				REFERENCES song(name, album, artist);
+				REFERENCES song(name, album, artist) ON DELETE CASCADE;
 				
 ALTER TABLE album_ranks ADD FOREIGN KEY (week)
 						REFERENCES week(day_starting_week);
@@ -74,9 +74,9 @@ ALTER TABLE appears_on ADD FOREIGN KEY( show_name )
 					REFERENCES TV_SHOW(name);
 					
 ALTER TABLE likes ADD FOREIGN KEY (fan_username)
-				REFERENCES fan(username);
+				REFERENCES fan(username) ON DELETE CASCADE;
 ALTER TABLE likes ADD FOREIGN KEY (song, album, artist)
-				REFERENCES song(name, album, artist);
+				REFERENCES song(name, album, artist) ON DELETE CASCADE;
 
 ALTER TABLE produces ADD FOREIGN KEY( producer )
 				REFERENCES producer(prod_name);
